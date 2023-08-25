@@ -95,6 +95,7 @@ const ListTables = () => {
             key={table._id}
             nameTable={table.nameTable}
             numberStarters={table.numberStarters}
+            status={table.status}
           />
         ))}
       </CardsContainer>

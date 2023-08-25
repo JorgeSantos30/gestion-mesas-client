@@ -1,21 +1,42 @@
-// StatisticsSection.js
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent, Typography, Grid, Box } from "@mui/material";
 import { useMesaContext } from "../context/MesaContext.jsx";
 
 const StatisticsSection = () => {
   const { mesas } = useMesaContext();
 
+  const [mesasDisponibles, setMesasDisponibles] = useState(0);
+  const [mesasOcupadas, setMesasOcupadas] = useState(0);
+  const [mesasReservadas, setMesasReservadas] = useState(0);
+
+  useEffect(() => {
+    const actualizarEstadisticas = async () => {
+      // Espera a que se actualice el estado en el contexto
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      const disponibles = mesas.filter(
+        (mesa) => mesa.status === "Disponible"
+      ).length;
+      const ocupadas = mesas.filter((mesa) => mesa.status === "Ocupada").length;
+      const reservadas = mesas.filter(
+        (mesa) => mesa.status === "Reservada"
+      ).length;
+
+      setMesasDisponibles(disponibles);
+      setMesasOcupadas(ocupadas);
+      setMesasReservadas(reservadas);
+    };
+
+    actualizarEstadisticas(); // Actualizar al montar el componente
+
+    const intervalId = setInterval(actualizarEstadisticas, 10000); // Actualizar cada 10 segundos
+
+    return () => {
+      clearInterval(intervalId); // Limpiar el intervalo al desmontar el componente
+    };
+  }, [mesas]);
+
   const totalMesas = mesas.length;
-  const mesasDisponibles = mesas.filter(
-    (mesa) => mesa.estado === "disponible"
-  ).length;
-  const mesasOcupadas = mesas.filter(
-    (mesa) => mesa.estado === "ocupada"
-  ).length;
-  const mesasReservadas = mesas.filter(
-    (mesa) => mesa.estado === "reservada"
-  ).length;
 
   return (
     <Box marginTop={10} display="flex" justifyContent="center">
