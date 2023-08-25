@@ -10,10 +10,7 @@ const StatisticsSection = () => {
   const [mesasReservadas, setMesasReservadas] = useState(0);
 
   useEffect(() => {
-    const actualizarEstadisticas = async () => {
-      // Espera a que se actualice el estado en el contexto
-      await new Promise((resolve) => setTimeout(resolve, 0));
-
+    const actualizarEstadisticas = () => {
       const disponibles = mesas.filter(
         (mesa) => mesa.status === "Disponible"
       ).length;
@@ -29,10 +26,8 @@ const StatisticsSection = () => {
 
     actualizarEstadisticas(); // Actualizar al montar el componente
 
-    const intervalId = setInterval(actualizarEstadisticas, 10000); // Actualizar cada 10 segundos
 
     return () => {
-      clearInterval(intervalId); // Limpiar el intervalo al desmontar el componente
     };
   }, [mesas]);
 

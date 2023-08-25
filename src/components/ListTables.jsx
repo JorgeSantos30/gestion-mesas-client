@@ -26,8 +26,7 @@ const ListTables = () => {
 
   useEffect(() => {
     fetchTables();
-  }, []);
-
+  }, [alltables, updateMesas]); // Observa cambios en alltables y updateMesa
   const handleAreaChange = (area) => {
     setSelectedArea(area); // Cambiar el área seleccionada
   };
