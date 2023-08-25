@@ -6,7 +6,6 @@ function DashboardPage() {
   return (
     <>
       <MesaProvider>
-        <MiniDrawer />
         <StatisticsSection />
         <ListTables />
       </MesaProvider>

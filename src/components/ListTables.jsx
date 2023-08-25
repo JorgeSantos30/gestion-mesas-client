@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TableCard from "./TableCard.jsx";
-import { tables } from "../api/tables..js";
+import { tables } from "../api/tables.js";
 import { useEffect } from "react";
 import { Checkbox, FormControlLabel, styled } from "@mui/material";
 import { Grid } from "@mui/material";

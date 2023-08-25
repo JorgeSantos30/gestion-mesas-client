@@ -22,6 +22,7 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -89,7 +90,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer({ children }) {
+export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -151,11 +152,7 @@ export default function MiniDrawer({ children }) {
               <ListItem key={text} disablePadding sx={{ display: "block" }}>
                 <Link
                   to={
-                    index === 0
-                      ? "/"
-                      : index === 1
-                      ? "/add-table"
-                      : "/add-wait"
+                    index === 0 ? "/" : index === 1 ? "/add-table" : "/add-wait"
                   }
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
@@ -193,9 +190,8 @@ export default function MiniDrawer({ children }) {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                        {children}
-        <DrawerHeader />
         <Outlet />
+        <DrawerHeader />
       </Box>
     </Box>
   );

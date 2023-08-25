@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useFormik } from "formik";
 import { addTableValidate } from "../../utils/ValidateForm";
-// import { tables } from "../../api/tables";
+import { tables } from "../../api/tables.js";
 import { useNavigate } from "react-router-dom"; // Utiliza useNavigate en lugar de useHistory
 
 const AddTablePage = () => {
@@ -31,6 +31,8 @@ const AddTablePage = () => {
       const parsedNumberStarters = parseInt(numberStarters);
       tables.addNew(nameTable, parsedNumberStarters, status, area);
       navigate("/");
+      window.location.reload(); // Recarga la página
+
     },
   });
 
@@ -100,7 +102,6 @@ const AddTablePage = () => {
                 <MenuItem value={"Salón"}>Salón</MenuItem>
                 <MenuItem value={"Terraza"}>Terraza</MenuItem>
                 <MenuItem value={"Juegos"}>Juegos</MenuItem>
-                <MenuItem value={"SalónB"}>Salón B</MenuItem>
               </Select>
               <InputLabel id="demo-simple-select-label">
                 Selecciona disponibilidad:

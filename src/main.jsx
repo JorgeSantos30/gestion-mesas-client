@@ -7,17 +7,18 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DashboardPage from "./pages/dashboard/index.jsx";
 import ErrorPage from "./pages/error/index.jsx";
 import AddTablePage from "./pages/addTable/index.jsx";
+import { RouterLayout } from "./common/RouterLayout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <DashboardPage />
-      </>
-    ),
+    element: <RouterLayout />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <DashboardPage />,
+      },
       {
         path: "add-table",
         element: <AddTablePage />,
