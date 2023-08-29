@@ -39,7 +39,7 @@ const StatisticsSection = () => {
         <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent>
-              <Typography variant="h5">Total de Mesas</Typography>
+              <Typography variant="h5">Mesas</Typography>
               <Typography variant="h4">{totalMesas}</Typography>
             </CardContent>
           </Card>
@@ -48,7 +48,7 @@ const StatisticsSection = () => {
         <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent>
-              <Typography variant="h5">Mesas Disponibles</Typography>
+              <Typography variant="h5">Disponibles</Typography>
               <Typography variant="h4">{mesasDisponibles}</Typography>
             </CardContent>
           </Card>
@@ -57,7 +57,7 @@ const StatisticsSection = () => {
         <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent>
-              <Typography variant="h5">Mesas Ocupadas</Typography>
+              <Typography variant="h5">Ocupadas</Typography>
               <Typography variant="h4">{mesasOcupadas}</Typography>
             </CardContent>
           </Card>
@@ -66,7 +66,7 @@ const StatisticsSection = () => {
         <Grid item xs={12} sm={6} md={3}>
           <Card>
             <CardContent>
-              <Typography variant="h5">Mesas Reservadas</Typography>
+              <Typography variant="h5">Reservadas</Typography>
               <Typography variant="h4">{mesasReservadas}</Typography>
             </CardContent>
           </Card>

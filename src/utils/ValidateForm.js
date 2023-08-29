@@ -12,3 +12,11 @@ export const addTableValidate = yup.object().shape({
     ),
   area: yup.string().trim().required("El campo area es requerido"),
 });
+
+export const addWaitValidate = yup.object().shape({
+  nameClient: yup
+    .string()
+    .trim()
+    .required("El nombre del cliente es requerido"),
+  numberStarters: yup.number().required("El numero de comensales es requerido"),
+});
