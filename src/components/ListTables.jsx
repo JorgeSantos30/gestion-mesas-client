@@ -92,6 +92,7 @@ const ListTables = () => {
         {filteredTables.map((table) => (
           <TableCard
             key={table._id}
+            id={table._id}
             nameTable={table.nameTable}
             numberStarters={table.numberStarters}
             status={table.status}
