@@ -16,7 +16,7 @@ const style = {
   p: 4,
 };
 
-export default function Modal() {
+export default function ModalComponent({ onClose, open}) {
   return (
     <div>
       <Modal

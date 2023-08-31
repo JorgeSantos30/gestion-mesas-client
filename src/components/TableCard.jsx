@@ -1,29 +1,103 @@
-import { Button, Card, CardActions, CardContent, Divider } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Divider,
+  Grid,
+} from "@mui/material";
 import TableRestaurantIcon from "@mui/icons-material/TableRestaurant";
 import GroupIcon from "@mui/icons-material/Group";
 import { tables } from "../api/tables";
+import ChipComponent from "./Chip";
+import ModalComponent from "./ModalComponent";
+import { useState } from "react";
 
 const TableCard = ({ nameTable, numberStarters, status, id }) => {
-  
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  let borderColor = "";
+
+  switch (status) {
+    case "Disponible":
+      borderColor = "green";
+      break;
+    case "Ocupada":
+      borderColor = "red";
+      break;
+    case "Reservada":
+      borderColor = "orange";
+      break;
+    default:
+      borderColor = "default";
+  }
   return (
-    <Card>
+    <Card sx={{ border: `2px solid ${borderColor}` }}>
       <CardContent>
-        <h2>
-          <TableRestaurantIcon /> {nameTable}
-        </h2>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item xs>
+            <TableRestaurantIcon />
+          </Grid>
+          <Grid item xs>
+            {nameTable}
+          </Grid>
+        </Grid>
         <Divider />
-        <p>
-          <GroupIcon /> {numberStarters}
-        </p>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Grid item xs>
+            <GroupIcon />
+          </Grid>
+          <Grid item xs>
+            {numberStarters}
+          </Grid>
+        </Grid>
         <Divider />
-        <p> {status}</p>
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ pt: 1 }}
+        >
+          <Grid item xs>
+            <ChipComponent state={status}></ChipComponent>
+          </Grid>
+        </Grid>
       </CardContent>
-      <CardActions style={{ display: "flex", justifyContent: "center" }}>
-        <Button variant="contained">Modificar</Button>
-        <Button onClick={() => tables.deleteById(id)} variant="outlined">
+      <Divider />
+
+      <CardActions>
+        <Button variant="outlined" onClick={handleOpenModal}>
+          Modificar
+        </Button>
+
+        <Button
+          color="error"
+          onClick={() => tables.deleteById(id)}
+          variant="outlined"
+        >
           Eliminar
         </Button>
       </CardActions>
+      <ModalComponent open={openModal} onClose={handleCloseModal} />
     </Card>
   );
 };
