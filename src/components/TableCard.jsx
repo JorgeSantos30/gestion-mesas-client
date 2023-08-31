@@ -86,8 +86,10 @@ const TableCard = ({ nameTable, numberStarters, status, id }) => {
 
       <CardActions>
         <Button variant="outlined" onClick={handleOpenModal}>
+        
           Modificar
         </Button>
+        <ModalComponent open={openModal} onClose={handleCloseModal} />
 
         <Button
           color="error"
@@ -97,7 +99,6 @@ const TableCard = ({ nameTable, numberStarters, status, id }) => {
           Eliminar
         </Button>
       </CardActions>
-      <ModalComponent open={openModal} onClose={handleCloseModal} />
     </Card>
   );
 };
