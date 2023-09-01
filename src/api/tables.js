@@ -4,6 +4,7 @@ const endpoints = {
   getAll: "/tables",
   addNew: "/register-table",
   deleteById: "/deleteById",
+  editById: "/edit-table",
 };
 
 export const tables = {
@@ -27,5 +28,19 @@ export const tables = {
       .catch((error) => {
         console.error(error);
       });
+  },
+  editTable: function (id, nameTable, numberStarters, status, area) {
+    return instance
+      .patch(`${endpoints.editById}/${id}`, {
+        nameTable: nameTable,
+        numberStarters: numberStarters,
+        status: status,
+        area: area,
+      })
+      .then((response) =>
+        console.log(
+          `La mesa con el ID: ${id} ha sido modificads. : ${response}`
+        )
+      );
   },
 };

@@ -6,13 +6,8 @@ import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { editTableValidate } from "../utils/ValidateForm";
-import {
-  InputLabel,
-  MenuItem,
-  Paper,
-  Select,
-  TextField,
-} from "@mui/material";
+import { InputLabel, MenuItem, Paper, Select, TextField } from "@mui/material";
+import { tables } from "../api/tables";
 
 const style = {
   position: "absolute",
@@ -26,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export default function ModalComponent({ onClose, open }) {
+export default function ModalComponent({ onClose, open, id }) {
   const navigate = useNavigate(); // Usamos useNavigate en lugar de useHistory
 
   const formik = useFormik({
@@ -40,8 +35,9 @@ export default function ModalComponent({ onClose, open }) {
     onSubmit: (values) => {
       const { nameTable, numberStarters, status, area } = values;
       const parsedNumberStarters = parseInt(numberStarters);
-      tables.addNew(nameTable, parsedNumberStarters, status, area);
+      tables.editTable(id, nameTable, parsedNumberStarters, status, area);
       navigate("/");
+      window.location.reload(true);
     },
   });
 
@@ -54,9 +50,7 @@ export default function ModalComponent({ onClose, open }) {
     >
       <Box sx={style}>
         <Paper>
-          <Typography variant="h4">
-            Editar mesa:
-          </Typography>
+          <Typography variant="h4">Editar mesa:</Typography>
           <Box component="form" onSubmit={formik.handleSubmit}>
             <TextField
               fullWidth
@@ -133,7 +127,7 @@ export default function ModalComponent({ onClose, open }) {
               type="submit"
               sx={{ mt: 1.5, mb: 3 }}
             >
-              Agregar mesa
+              Modificar mesa
             </Button>
           </Box>
         </Paper>

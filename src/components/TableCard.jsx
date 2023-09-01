@@ -89,7 +89,7 @@ const TableCard = ({ nameTable, numberStarters, status, id }) => {
         
           Modificar
         </Button>
-        <ModalComponent open={openModal} onClose={handleCloseModal} />
+        <ModalComponent open={openModal} onClose={handleCloseModal} id={id}/>
 
         <Button
           color="error"

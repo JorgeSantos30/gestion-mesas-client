@@ -31,6 +31,7 @@ const AddTablePage = () => {
       const parsedNumberStarters = parseInt(numberStarters);
       tables.addNew(nameTable, parsedNumberStarters, status, area);
       navigate("/");
+      window.location.reload(true);
     },
   });
 

@@ -38,7 +38,7 @@ export default function ListDiners() {
 
   useEffect(() => {
     fetchWaits(); // Llama a fetchWaits cuando el componente se monta
-  }, [allWaits]); // El segundo argumento vacío indica que se ejecuta solo al montar
+  }, []); // El segundo argumento vacío indica que se ejecuta solo al montar
 
   return (
     <Box sx={{ height: 300, width: "100%", mt: "40px" }}>

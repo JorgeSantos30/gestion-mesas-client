@@ -26,6 +26,7 @@ const AddWaitPage = () => {
       const parsedNumberStarters = parseInt(numberStarters);
       waits.addNew(nameClient, parsedNumberStarters);
       navigate("/");
+      window.location.reload(true);
     },
   });
 
